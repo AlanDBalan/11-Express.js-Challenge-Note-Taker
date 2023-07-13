@@ -50,6 +50,14 @@ const deleteNote = (id) =>
     },
   });
 
+const updateNote = (id) =>
+  fetch(`/api/notes/${id}`, {
+    method: 'UPDATE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+
 const renderActiveNote = () => {
   hide(saveNoteBtn);
 
@@ -113,6 +121,14 @@ const handleRenderSaveBtn = () => {
     hide(saveNoteBtn);
   } else {
     show(saveNoteBtn);
+  }
+};
+
+const handleRenderUpdateBtn = () => {
+  if (!noteTitle.value.trim() || !noteText.value.trim()) {
+    hide(updateNoteBtn);
+  } else {
+    show(updateNoteBtn);
   }
 };
 
